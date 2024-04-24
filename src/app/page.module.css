@@ -1,8 +1,9 @@
 /* src/app/page.module.css */
 .main {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: 0rem;
   font-family: "Courier New", Courier, monospace;
   background-color: #E0C1B3;
   color: #5A4044;
@@ -11,11 +12,46 @@
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  padding-top: 4rem;
+  margin-top: -4rem;
+  padding-bottom: 1rem;
+  background-color: #AEB4A9;
+  border-radius: 15rem;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
+
+.main::before,
+.main::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: linear-gradient(45deg, #C15273 25%, transparent 25%),
+                    linear-gradient(-45deg, #C15273 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #C15273 75%),
+                    linear-gradient(-45deg, transparent 75%, #C15273 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.main::before {
+  top: 0;
+}
+
+.main::after {
+  bottom: 0;
+}
+
 
 .title {
   font-size: 3rem;
   color: #C15273;
+
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
 }
 
 .subtitle {
@@ -23,20 +59,24 @@
 }
 
 .content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
 }
 
 .section {
-  width: 45%;
+  grid-column: span 4;
 }
 
 .sectionTitle {
   font-size: 2rem;
   color: #C15273;
   padding-bottom: 0.5rem;
-  padding: 1rem;
   text-align: center;
+
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
 }
 
 .sectionContent {
@@ -45,6 +85,16 @@
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   padding: 1rem;
+}
+
+.sectionImage {
+
+}
+
+.sectionImage img {
+  object-fit: cover;
+  margin-left: -3rem;
+  margin-right: -3rem;
 }
 
 .beefBabiesGrid {
@@ -83,11 +133,7 @@
 
 @media (max-width: 768px) {
   .content {
-    flex-direction: column;
-  }
-
-  .section {
-    width: 100%;
-    margin-bottom: 2rem;
+    grid-template-columns: 1fr;
   }
 }
+
