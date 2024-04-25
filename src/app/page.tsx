@@ -100,7 +100,7 @@ export default function Home() {
             onClick={() => setDecoyActivated(!decoyActivated)}
           />
         </div>
-        <div className={styles.sectionImage}>
+        <div className={styles.sectionImage} style={{ display: "flex", justifyContent: "end", zIndex: 3 }}>
           <Image
             src="/fries.png"
             alt="Image"
