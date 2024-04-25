@@ -147,5 +147,8 @@
   .content {
     grid-template-columns: 1fr;
   }
+  .beefBaby {
+    flex-direction: column;
+  }
 }
 
