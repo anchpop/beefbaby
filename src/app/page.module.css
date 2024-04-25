@@ -109,17 +109,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .beefBabyBio {
   padding: 1rem;
   min_width: 150px;
+  flex-grow: 1; 
 }
 
 .beefBabyImage {
   border-radius: 50%;
   border: 4px solid #C15273;
+  flex-grow: 0; 
 }
 
 .beefBabyName {

@@ -25,10 +25,16 @@ let BEEF_BABIES = [
     bio: "Inventor of the hit app \"music league\"",
     image: "/beefs/riley.png"
   },
+  {
+    name: "Jimmy",
+    bio: "Master of spanish, veteran in beans, outlaw in peru",
+    image: "/beefs/jimmy.png"
+  },
 ]
 
 export default function Home() {
-  const [babyIndex, setBabyIndex] = useState(0);
+  const [decoyActivated, setDecoyActivated] = useState(false);
+  const [babyIndex, setBabyIndex] = useState(-1);
 
   useEffect(() => {
     // Check if the count exists in local storage
@@ -48,7 +54,32 @@ export default function Home() {
   }, []); // Empty dependency array ensures this runs only on the first render
 
   console.log(babyIndex)
-  const baby = BEEF_BABIES[babyIndex];
+  const baby = babyIndex !== -1 ? BEEF_BABIES[babyIndex] : {
+    name: "Loading...",
+    bio: "Loading...",
+    image: "/beefs/blank.png"
+  };
+
+  const tvGuide = <>
+    <h2 className={styles.sectionTitle}>Beef TV</h2>
+    <div className={styles.sectionContent}>
+      <p>Watch movies and shows: <a href="https://watch.beef.baby">watch.beef.baby</a></p>
+      <p>Request movies and shows: <a href="https://request.beef.baby">request.beef.baby</a></p>
+      <p><b>Requires an account!</b></p>
+      <p>To watch on your phone, use the <a href="https://apps.apple.com/us/app/swiftfin/id1604098728">Swiftfin app</a> and put &quot;http<b>s</b>://watch.beef.baby&quot; as the url. </p>
+    </div>
+  </>;
+
+  const decoy = <>
+    <h2 className={styles.sectionTitle}>Beef Directory</h2>
+    <div className={styles.sectionContent}>
+      <p><a href="https://felt.com/map/Chicago-Zone-dkNR1xgkTS9B4eXXXxpwnPA?loc=41.8833,-87.6384,11.34z&share=1">Cool stuff in Chicago map</a></p>
+      <p><a href="https://www.instagram.com/the_trees_will_return/?hl=en-gb">The Trees Will Return</a></p>
+      <p><a href="https://sexandchicago.substack.com/">Andre&apos;s Substack</a></p>
+      If you want anything added to the directory, let me know!
+
+    </div>
+  </>;
 
   return (
     <main className={styles.main}>
@@ -58,13 +89,7 @@ export default function Home() {
       </div>
       <div className={styles.content}>
         <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Beef TV</h2>
-          <div className={styles.sectionContent}>
-            <p>Watch movies and shows: <a href="https://watch.beef.baby">watch.beef.baby</a></p>
-            <p>Request movies and shows: <a href="https://request.beef.baby">request.beef.baby</a></p>
-            <p><b>Requires an account!</b></p>
-            <p>To watch on your phone, use the <a href="https://apps.apple.com/us/app/swiftfin/id1604098728">Swiftfin app</a> and put &quot;http<b>s</b>://watch.beef.baby&quot; as the url. </p>
-          </div>
+          {decoyActivated ? tvGuide : decoy}
         </div>
         <div className={styles.sectionImage}>
           <Image
@@ -72,6 +97,7 @@ export default function Home() {
             alt="Image"
             width={200}
             height={200}
+            onClick={() => setDecoyActivated(!decoyActivated)}
           />
         </div>
         <div className={styles.sectionImage}>
@@ -103,7 +129,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.section} style={{ "gridColumn": "span 5" }}>
-          <h2 className={styles.sectionTitle}>Beef Baby Adventures</h2>
+          <h2 className={styles.sectionTitle}>Recent Beef Adventures</h2>
           <div className={styles.sectionContent}>
             {/* Add your blog posts here */}
             <div className={styles.blogPost}>
