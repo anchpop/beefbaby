@@ -30,6 +30,11 @@ let BEEF_BABIES = [
     bio: "Master of spanish, veteran in beans, outlaw in peru",
     image: "/beefs/jimmy.png"
   },
+  {
+    name: "Zia",
+    bio: "Omnireligious, very poetic, and always down for whatever",
+    image: "/beefs/zia.png"
+  },
 ]
 
 export default function Home() {
@@ -76,6 +81,7 @@ export default function Home() {
       <p><a href="https://felt.com/map/Chicago-Zone-dkNR1xgkTS9B4eXXXxpwnPA?loc=41.8833,-87.6384,11.34z&share=1">Cool stuff in Chicago map</a></p>
       <p><a href="https://www.instagram.com/the_trees_will_return/?hl=en-gb">The Trees Will Return</a></p>
       <p><a href="https://sexandchicago.substack.com/">Andre&apos;s Substack</a></p>
+      <p><a href="https://sluggy.substack.com/">Zia&apos;s ⍣✫slugstack✫⍣</a></p>
       If you want anything added to the directory, let me know!
 
     </div>
