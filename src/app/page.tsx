@@ -39,6 +39,7 @@ let BEEF_BABIES = [
 
 export default function Home() {
   const [decoyActivated, setDecoyActivated] = useState(false);
+  const [babyActivated, setBabyActivated] = useState(false);
   const [babyIndex, setBabyIndex] = useState(-1);
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export default function Home() {
     </div>
   </>;
 
-  return (
+  const diner = <>
     <main className={styles.main}>
       <div className={styles.header}>
         <h1 className={styles.title}>Beef Baby Diner</h1>
@@ -112,6 +113,7 @@ export default function Home() {
             alt="Image"
             width={200}
             height={200}
+            onClick={() => setBabyActivated(!babyActivated)}
           />
         </div>
         <div className={styles.section}>
@@ -143,6 +145,7 @@ export default function Home() {
               <p className={styles.blogPostDate}>April 20, 2024</p>
               <p className={styles.blogPostContent}>
                 <Image
+                  className={styles.adventure}
                   src="/adventure/marquette.jpg"
                   alt="Image"
                   width={600}
@@ -155,5 +158,35 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+    </>;
+
+    const login = <>
+      <main>
+        <div className={styles.loginHeader}>
+          <Image 
+            src="/beefbaby.svg"
+            alt="title"
+            width={300}
+            height={100}
+          />
+          <div className={styles.inputContainer}>
+            <input 
+              type="text" 
+              placeholder="username" 
+              className={styles.textInput} 
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <input 
+              type="text" 
+              placeholder="password" 
+              className={styles.textInput} 
+            />
+          </div>
+          <p className={styles.subtitle}>Home of the Beef Baby!</p>
+        </div>
+      </main>
+    </>;
+
+    return (babyActivated ? login : diner);
 }
